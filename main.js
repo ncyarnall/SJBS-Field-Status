@@ -1,61 +1,4 @@
-var TxtRotate = function(el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-  };
-  
-  TxtRotate.prototype.tick = function() {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-  
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-  
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-  
-    var that = this;
-    var delta = 300 - Math.random() * 100;
-  
-    if (this.isDeleting) { delta /= 2; }
-  
-    if (!this.isDeleting && this.txt === fullTxt) {
-      delta = this.period;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.loopNum++;
-      delta = 500;
-    }
-  
-    setTimeout(function() {
-      that.tick();
-    }, delta);
-  };
-  
-  window.onload = function() {
-    var elements = document.getElementsByClassName('txt-rotate');
-    for (var i=0; i<elements.length; i++) {
-      var toRotate = elements[i].getAttribute('data-rotate');
-      var period = elements[i].getAttribute('data-period');
-      if (toRotate) {
-        new TxtRotate(elements[i], JSON.parse(toRotate), period);
-      }
-    }
-    // INJECT CSS
-    var css = document.createElement("style");
-    css.type = "text/css";
-    css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
-    document.body.appendChild(css);
-  };
 
-  
   function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -65,29 +8,123 @@ var TxtRotate = function(el, toRotate, period) {
   }
 
 
-
-
-  $(document).ready(function() {
-    sleep(2000)
-    var id = '#dialog';
-    var maskHeight = $(document).height();
-    var maskWidth = $(window).width();
-    $('#mask').css({'width':maskWidth,'height':maskHeight}); 
-    $('#mask').fadeIn(500); 
-    $('#mask').fadeTo("slow",0.9); 
-          var winH = $(window).height();
-    var winW = $(window).width();
-          $(id).css('top',  winH/2-$(id).height()/2);
-    $(id).css('left', winW/2-$(id).width()/2);
-       $(id).fadeIn(2000);  
-       $('.window .close').click(function (e) {
-    e.preventDefault();
-    $('#mask').hide();
-    $('.window').hide();
-       });  
-       $('#mask').click(function () {
-    $(this).hide();
-    $('.window').hide();
-   });  
-   
+  document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
+  t.style.left = n.clientX + "px", 
+  t.style.top = n.clientY + "px", 
+  e.style.left = n.clientX + "px", 
+  e.style.top = n.clientY + "px", 
+  i.style.left = n.clientX + "px", 
+  i.style.top = n.clientY + "px"
   });
+  var t = document.getElementById("cursor"),
+      e = document.getElementById("cursor2"),
+      i = document.getElementById("cursor3");
+  function n(t) {
+      e.classList.add("hover", "hover-2"), i.classList.add("hover", "hover-2")
+  }
+  function s(t) {
+      e.classList.remove("hover", "hover-2"), i.classList.remove("hover", "hover-2")
+  }
+  s();
+  for (var r = document.querySelectorAll(".hover-target, .hover-target-2"), a = r.length - 1; a >= 0; a--) {
+      o(r[a])
+  }
+  function o(t) {
+      t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
+  }
+document.addEventListener('DOMContentLoaded', function () {
+    var hoverLink = document.querySelector('.logo');
+    var bodychange = document.querySelector('body');
+
+    hoverLink.addEventListener('mouseenter', function (e) {
+        bodychange.classList.add('logo-wrap');
+    });
+    hoverLink.addEventListener('mouseleave', function () {
+        bodychange.classList.remove('logo-wrap');
+    })
+})
+document.addEventListener('DOMContentLoaded', function () {
+    var hoverLink = document.querySelector('.img-1');
+    var bodychange = document.querySelector('body');
+
+    hoverLink.addEventListener('mouseenter', function (e) {
+        bodychange.classList.add('img-1-wrap');
+    });
+    hoverLink.addEventListener('mouseleave', function () {
+        bodychange.classList.remove('img-1-wrap');
+    })
+})
+document.addEventListener('DOMContentLoaded', function () {
+    var hoverLink = document.querySelector('.img-2');
+    var bodychange = document.querySelector('body');
+
+    hoverLink.addEventListener('mouseenter', function (e) {
+        bodychange.classList.add('img-2-wrap');
+    });
+    hoverLink.addEventListener('mouseleave', function () {
+        bodychange.classList.remove('img-2-wrap');
+    })
+})
+document.addEventListener('DOMContentLoaded', function () {
+    var hoverLink = document.querySelector('.img-3');
+    var bodychange = document.querySelector('body');
+
+    hoverLink.addEventListener('mouseenter', function (e) {
+        bodychange.classList.add('img-3-wrap');
+    });
+    hoverLink.addEventListener('mouseleave', function () {
+        bodychange.classList.remove('img-3-wrap');
+    })
+})
+document.addEventListener('DOMContentLoaded', function () {
+    var hoverLink = document.querySelector('.img-4');
+    var bodychange = document.querySelector('body');
+
+    hoverLink.addEventListener('mouseenter', function (e) {
+        bodychange.classList.add('img-4-wrap');
+    });
+    hoverLink.addEventListener('mouseleave', function () {
+        bodychange.classList.remove('img-4-wrap');
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+	
+	//Page cursors
+
+    document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
+      t.style.left = n.clientX + "px", 
+		t.style.top = n.clientY + "px", 
+		e.style.left = n.clientX + "px", 
+		e.style.top = n.clientY + "px", 
+		i.style.left = n.clientX + "px", 
+		i.style.top = n.clientY + "px"
+    });
+    var t = document.getElementById("cursor"),
+        e = document.getElementById("cursor2"),
+        i = document.getElementById("cursor3");
+    function n(t) {
+        e.classList.add("hover"), i.classList.add("hover")
+    }
+    function s(t) {
+        e.classList.remove("hover"), i.classList.remove("hover")
+    }
+    s();
+    for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
+        o(r[a])
+    }
+    function o(t) {
+        t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
+    }
+
+
+
